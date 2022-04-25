@@ -1,0 +1,17 @@
+.container {
+    max-width: 90%;
+    overflow: auto;
+}
+
+.add_btn {
+    text-align: right;
+}
+
+.icon {
+    color: #fff;
+    font-size: 20px;
+}
+
+.center {
+    text-align: center;
+}
