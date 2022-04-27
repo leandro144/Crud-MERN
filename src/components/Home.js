@@ -1,8 +1,8 @@
 import React from 'react'
 import "../components/Home.css"
-import { BsEye } from "react-icons/bs";
-import { FaUserEdit } from "react-icons/fa";
-import { RiDeleteBin6Line } from "react-icons/ri"
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Home = () => {
   return (
@@ -31,9 +31,9 @@ const Home = () => {
                         <td>WebDeveloper</td>
                         <td>91919191919191</td>
                         <td className='d-flex justify-content-around'>
-                            <button className='btn bg-success text-white'><span className="icon"><BsEye /></span></button>
-                            <button className='btn bg-primary text-white'><span className="icon"><FaUserEdit /></span></button>
-                            <button className='btn bg-danger text-white'><span className="icon"><RiDeleteBin6Line /></span></button>
+                        <button className='btn bg-success text-white'><span className="icon"><RemoveRedEyeIcon /></span></button>
+                            <button className='btn bg-primary text-white'><span className="icon"><EditIcon /></span></button>
+                            <button className='btn bg-danger text-white'><span className="icon"><DeleteIcon /></span></button>
                         </td>
                     </tr>
                     <tr className='align-middle center'>
@@ -43,9 +43,9 @@ const Home = () => {
                         <td>WebDeveloper</td>
                         <td>91919191919191</td>
                         <td className='d-flex justify-content-around'>
-                            <button className='btn bg-success text-white'><span className="icon"><BsEye /></span></button>
-                            <button className='btn bg-primary text-white'><span className="icon"><FaUserEdit /></span></button>
-                            <button className='btn bg-danger text-white'><span className="icon"><RiDeleteBin6Line /></span></button>
+                            <button className='btn bg-success text-white'><span className="icon"><RemoveRedEyeIcon /></span></button>
+                            <button className='btn bg-primary text-white'><span className="icon"><EditIcon /></span></button>
+                            <button className='btn bg-danger text-white'><span className="icon"><DeleteIcon /></span></button>
                         </td>
                     </tr>
                 </tbody>
