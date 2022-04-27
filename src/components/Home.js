@@ -36,6 +36,18 @@ const Home = () => {
                             <button className='btn bg-danger text-white'><span className="icon"><RiDeleteBin6Line /></span></button>
                         </td>
                     </tr>
+                    <tr className='align-middle center'>
+                        <th scope="row">1</th>
+                        <td>Meet</td>
+                        <td>meet@email.com</td>
+                        <td>WebDeveloper</td>
+                        <td>91919191919191</td>
+                        <td className='d-flex justify-content-around'>
+                            <button className='btn bg-success text-white'><span className="icon"><BsEye /></span></button>
+                            <button className='btn bg-primary text-white'><span className="icon"><FaUserEdit /></span></button>
+                            <button className='btn bg-danger text-white'><span className="icon"><RiDeleteBin6Line /></span></button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
