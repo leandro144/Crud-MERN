@@ -3,13 +3,14 @@ import "../components/Home.css"
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <div className='mt-5'>
         <div className="container">
             <div className="add_btn mt-2">
-                <button className="btn bg-success text-white">Adicionar</button>
+                <Link to="/register" className="btn bg-success text-white">Adicionar</Link>
             </div>
 
             <table class="table mt-3">
