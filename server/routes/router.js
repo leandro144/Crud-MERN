@@ -14,6 +14,18 @@ router.post("/register", async (req,res) => {
 
         const preuser = await users.findOne({email:email});
         console.log(preuser);
+
+        if (preuser) {
+            res.status(404).send("Esse usuario esta pronto")
+        } else {
+            const adduser = new users ({
+                name,email,age,mobile,work,add,desc
+            });
+
+            await adduser.save();
+            res.status(201).json(adduser);
+            console.log(adduser);
+        }
         
     } catch (error) {
         res.status(400).send(error)
