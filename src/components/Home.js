@@ -68,7 +68,7 @@ const Home = () => {
                         <td>{element.work}</td>
                         <td>{element.mobile}</td>
                         <td className='d-flex justify-content-around'>
-                        <button className='btn bg-success text-white'><span className="icon"><RemoveRedEyeIcon /></span></button>
+                            <Link to={`view/${element._id}`}><button className='btn bg-success text-white'><span className="icon"><RemoveRedEyeIcon /></span></button></Link>
                             <button className='btn bg-primary text-white'><span className="icon"><EditIcon /></span></button>
                             <button className='btn bg-danger text-white'><span className="icon"><DeleteIcon /></span></button>
                         </td>

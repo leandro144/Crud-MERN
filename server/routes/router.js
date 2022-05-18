@@ -7,7 +7,7 @@ router.post("/register", async (req,res) => {
     const {name,email,age,mobile,work,add,desc} = req.body;
 
     if (!name || !email || !age || !mobile || !work || !add || !desc) {
-        res.status(400).send("plz fill the data");
+        res.status(422).send("plz fill the data");
     }
 
     try {
@@ -16,7 +16,7 @@ router.post("/register", async (req,res) => {
         console.log(preuser);
 
         if (preuser) {
-            res.status(404).send("Esse usuario esta pronto")
+            res.status(422).send("Esse usuario esta pronto")
         } else {
             const adduser = new users ({
                 name,email,age,mobile,work,add,desc
@@ -37,6 +37,20 @@ router.get("/getdata",async(req,res)=>{
         const userdata = await users.find();
         res.status(201).json(userdata)
         console.log(userdata);
+    } catch (error) {
+        res.status(422).json(error);
+    }
+})
+
+router.get("/getuser/:id",async(req,res)=>{
+    try {
+        console.log(req.params);
+        const {id} = req.params;
+
+        const userindividual = await users.findById({_id:id});
+        console.log(userindividual);
+        res.status(201).json(userindividual)
+
     } catch (error) {
         res.status(422).json(error);
     }
