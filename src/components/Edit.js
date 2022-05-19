@@ -1,7 +1,17 @@
-import React,  { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React,  { useEffect, useState } from 'react'
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import  {  ToastContainer ,  toast  }  from  'react-toastify' ; 
+import  'react-toastify/dist/ReactToastify.css' ;
 
 const Edit = () => {
+
+    // const [getuserdata,setUserdata] = useState([]);
+   // console.log(getuserdata); //
+
+    const navigate = useNavigate("");
+
+    const {id} = useParams("");
+    console.log(id);
 
     const [inpval,setINP] = useState({
         name:"",
@@ -24,6 +34,63 @@ const Edit = () => {
             
         })
 
+    }
+
+    const getdata = async()=> {
+
+        const res = await fetch(`/getuser/${id}` ,{
+            method: "GET",
+            headers:{
+                "Content-Type": "application/json"
+            }
+        });
+    
+        const data = await res.json();
+        console.log(data);
+    
+        if(res.status === 422 || !data) {
+            console.log("error ");
+    
+        }else{
+    
+            setINP(data)
+            console.log("get data");
+        }
+       
+    }
+
+    useEffect(()=> {
+        getdata();
+    },[]);
+
+    const updateuser = async(e)=> {
+        e.preventDefault();
+
+        const {name,email,work,add,mobile,desc,age} = inpval;
+
+        const res2 = await fetch(`/updateuser/${id}`, {
+            method: "PATCH",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify({
+                name,email,work,add,mobile,desc,age
+            })
+        });
+
+        const data2 = await res2.json();
+        console.log(data2);
+
+        if(res2.status === 422 || !data2){
+            toast.error("Erro ao Editar !", {
+                position: toast.POSITION.TOP_CENTER
+              });
+        }else{
+            toast.success("Editado com sucesso !", {
+                position: toast.POSITION.TOP_CENTER
+              });
+              navigate("/")
+        }
     }
 
   return (
@@ -60,11 +127,12 @@ const Edit = () => {
                 <label htmlFor="exampleInputPassword1" className="form-label">Descrição</label>
                 <textarea name="desc" value={inpval.desc} onChange={setdata} className='form-control' id="" cols="30" rows="s"></textarea>
             </div>
-            <button type="submit" className="btn btn-primary mb-2">Enviar</button>
+            <button type="submit" onClick={updateuser} className="btn btn-primary mb-2">Enviar</button>
+            <ToastContainer/>
             </div> 
      </form>
     </div>
   )
 }
 
-export default Edit
+export default Edit;

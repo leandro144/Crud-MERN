@@ -28,7 +28,7 @@ router.post("/register", async (req,res) => {
         }
         
     } catch (error) {
-        res.status(400).send(error)
+        res.status(422).send(error)
     }
 })
 
@@ -51,6 +51,34 @@ router.get("/getuser/:id",async(req,res)=>{
         console.log(userindividual);
         res.status(201).json(userindividual)
 
+    } catch (error) {
+        res.status(422).json(error);
+    }
+})
+
+router.patch("/updateuser/:id",async(req,res)=> {
+    try {
+        const {id} = req.params;
+
+        const updateuser = await users.findByIdAndUpdate(id,req.body, {
+            new:true
+        });
+
+        console.log(updateuser);
+        res.status(201).json(updateuser);
+    } catch (error) {
+        res.status(422).json(error);
+    }
+})
+
+router.delete("/deleteuser/:id", async(req,res)=> {
+    try {
+        const {id} = req.params;
+
+        const deleteuser = await users.findByIdAndDelete({_id:id})
+
+        console.log(deleteuser);
+        res.status(201).json(deleteuser);
     } catch (error) {
         res.status(422).json(error);
     }

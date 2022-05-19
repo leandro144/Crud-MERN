@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { adddata } from './context/ContextProvider';
+import  {  ToastContainer ,  toast  }  from  'react-toastify' ; 
+import  'react-toastify/dist/ReactToastify.css' ;
 
 const Register = () => {
+
+    const {udata, setUdata} = useContext(adddata);
 
     const [inpval,setINP] = useState({
         name:"",
@@ -44,11 +49,14 @@ const Register = () => {
         console.log(data);
 
         if(res.status === 422 || !data) {
-            alert("error");
-            console.log("error ");
+            toast.error("Erro ao cadastrar novo usuário !", {
+                position: toast.POSITION.TOP_CENTER
+              });
         }else{
-            alert("data added");
-            console.log("data added ");
+            toast.success("Usuário adicionado com sucesso !", {
+                position: toast.POSITION.TOP_CENTER
+              });
+              setUdata()
         }
        
     }
@@ -88,6 +96,7 @@ const Register = () => {
                 <textarea name="desc" value={inpval.desc} onChange={setdata} className='form-control' id="" cols="30" rows="s"></textarea>
             </div>
             <button type="submit" onClick={addinpdata} className="btn btn-primary mb-2">Enviar</button>
+            <ToastContainer />
             </div> 
      </form>
     </div>

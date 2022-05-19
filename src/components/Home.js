@@ -3,12 +3,16 @@ import "../components/Home.css"
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import  { ToastContainer, toast }  from  'react-toastify' ; 
+import  'react-toastify/dist/ReactToastify.css';
+
 
 const Home = () => {
 
     const [getuserdata,setUserdata] = useState([]);
     console.log(getuserdata);
+
 
     const getdata = async(e)=> {
 
@@ -22,7 +26,7 @@ const Home = () => {
         const data = await res.json();
         console.log(data);
 
-        if(res.status === 404 || !data) {
+        if(res.status === 422 || !data) {
             console.log("error ");
 
         }else{
@@ -36,12 +40,35 @@ const Home = () => {
     useEffect(()=> {
         getdata();
     },[])
+ 
+    const deleteuser = async (id)=>{
+        const res2 = await fetch(`/deleteuser/${id}`, {
+            method: "DELETE",
+            headers:{
+                "Content-Type": "application/json"
+            }
+        });
+
+        const deletedata = await res2.json();
+        console.log(deletedata);
+
+        if(res2.status === 422 || !deletedata) {
+            console.log("error")
+        }else{
+            toast.success(" Usuário excluido com sucesso !", {
+                position: toast.POSITION.TOP_CENTER
+            });
+            getdata();
+        }
+    }
 
   return (
+
     <div className='mt-5'>
         <div className="container">
             <div className="add_btn mt-2">
                 <Link to="/register" className="btn bg-success text-white">Adicionar</Link>
+                <ToastContainer />
             </div>
 
             <table class="table mt-3">
@@ -69,8 +96,8 @@ const Home = () => {
                         <td>{element.mobile}</td>
                         <td className='d-flex justify-content-around'>
                             <Link to={`view/${element._id}`}><button className='btn bg-success text-white'><span className="icon"><RemoveRedEyeIcon /></span></button></Link>
-                            <button className='btn bg-primary text-white'><span className="icon"><EditIcon /></span></button>
-                            <button className='btn bg-danger text-white'><span className="icon"><DeleteIcon /></span></button>
+                            <Link to={`edit/${element._id}`}><button className='btn bg-primary text-white'><span className="icon"><EditIcon /></span></button></Link>
+                            <button className='btn bg-danger text-white' onClick={()=>deleteuser(element._id)}><span className="icon"><DeleteIcon /></span></button>
                         </td>
                         </tr>
                             </>
@@ -82,6 +109,7 @@ const Home = () => {
             </table>
         </div>
     </div>
+    
   )
 }
 
