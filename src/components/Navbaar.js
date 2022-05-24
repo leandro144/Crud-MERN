@@ -1,31 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../components/Navbaar.css"
-import { BiSearchAlt } from "react-icons/bi";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs'
+import logo from '../assets/logo.png';
 
-const Navbaar = () => {
+const Navbaar = (props) => {
+
+    const [inactive, setInactive] = useState(false);
+
     return (
-        <header>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Navbar</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                         <a className="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                </ul>
-                <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Faça sua pesquisa..." aria-label="Search" />
-                    <button className="btn btn-outline-success" type="submit"><BiSearchAlt /></button>
-                </form>
+       <>
+        <div className={`side-menu ${inactive ? "inactive" : ""}`}>
+                <div className="top-section">
+                    <div className="logo">
+                        <img src={logo} alt="" />
+                    </div>
+                    <div onClick= {() => {setInactive(!inactive);}} className="toggle-menu-btn">
+                    {inactive ? (
+                       <i>< BsFillArrowRightSquareFill /></i>
+                    ) : (
+                        <i>< BsFillArrowLeftSquareFill /></i>
+                    )}    
+                    </div>
+
+                    <div className="search-controller">
+                        <button className="search-btn">
+                            <i>< BiSearchAlt2 /></i>
+                        </button>
+                        <input type="search" placeholder="Faça uma busca" />
+                    </div>
+                </div>
+
+                <div className="divider">
+
                 </div>
             </div>
-            </nav>
-        </header>
+       </>
     );
 }
 

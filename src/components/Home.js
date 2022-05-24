@@ -64,14 +64,14 @@ const Home = () => {
 
   return (
 
-    <div className='mt-5'>
+    
         <div className="container">
-            <div className="add_btn mt-2">
+            <div className="add_btn mt-5">
                 <Link to="/register" className="btn bg-success text-white">Adicionar</Link>
                 <ToastContainer />
             </div>
 
-            <table class="table mt-3">
+            <table class="table mt-5">
                 <thead className='table-dark'>
                     <tr className='center'>
                         <th scope="col">ID</th>
@@ -108,7 +108,6 @@ const Home = () => {
                 </tbody>
             </table>
         </div>
-    </div>
     
   )
 }
