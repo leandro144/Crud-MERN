@@ -75,6 +75,10 @@ body {
     color: #666;
 }
 
+.side-menu .menu-item {
+    margin: 5px 0;
+}
+
 .side-menu .search-controller input[type=search] {
     border: 0;
     outline: none;
@@ -86,6 +90,107 @@ body {
     width: 100%;
     padding-left: 40px;
     color: #fff;
+}
+
+.side-menu .main-menu .menu-item {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.side-menu .main-menu .sub-menu {
+    color: #333;
+    margin-left: 1.25rem;
+    border-left: 1px solid #666;
+    padding-left: 1.875rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-in;
+}
+
+.side-menu .main-menu .sub-menu.active {
+    max-height: 200px;
+}
+
+.side-menu .main-menu .sub-menu a {
+    display: block;
+    margin: 5px 0;
+    font-size: 1rem;
+    font-weight: 600;
+
+}
+
+.side-menu .main-menu .menu-item .menu-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+
+.side-menu .main-menu .menu-item span {
+    position: absolute;
+    display: inline-block;
+    line-height: 2.5rem;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+}
+
+.side-menu.inactive .main-menu .menu-item span{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
+.side-menu-footer {
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+}
+
+.side-menu-footer .avatar {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.side-menu-footer .avatar img {
+    max-width: 100%;
+}
+
+.side-menu-footer .user-info {
+    display: inline-block;
+    margin: 0 10px;
+    color: #fff;
+    position: absolute;
+    opacity: 1;
+    transition: opacity 2s ease-in;
+}
+
+.side-menu.inactive .side-menu-footer .user-info {
+     opacity: 0;
+     width: 0;
+     height: 0;
+     overflow: hidden;
+}
+
+.side-menu-footer .user-info h5 {
+    font-size: 1rem;
+}
+
+.side-menu-footer .user-info p {
+    font-size: 0.875rem;
 }
 
 .divider {
