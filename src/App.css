@@ -1,0 +1,7 @@
+.container-routes {
+    margin-left: 300px;
+}
+
+.container-routes.inactive {
+    margin-left: 80px;
+}

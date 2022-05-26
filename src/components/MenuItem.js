@@ -3,14 +3,14 @@ import { AiFillDashboard } from "react-icons/ai"
 import { BiSearchAlt2, BiNews, BiPen } from "react-icons/bi";
 
 const MenuItem = (props) => {
-    const { name, subMenus } = props;
+    const { name, subMenus, iconClassName, onClick } = props;
     const [expand, setExpand ] = useState(false);
 
   return (
-    <li>
+    <li onClick={props.onClick}>
         <a onClick={() => setExpand(!expand)} className="menu-item">
             <div className="menu-icon">
-                 <i><BiNews/></i>
+                 <i class={iconClassName}></i>
             </div>
             <span>{name}</span> 
         </a>

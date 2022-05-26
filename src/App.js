@@ -8,17 +8,52 @@ import { Routes, Route } from 'react-router-dom';
 import Edit from "./components/Edit";
 import Details from "./components/Details";
 import { MenuItem } from "@mui/material";
+import { useState } from "react";
+
+const Dashboard = () => {
+  return <h1>Dashboard</h1>;
+};
+
+const Content = () => {
+  return <h1>Content</h1>;
+};
+
+const Courses = () => {
+  return <h1>Content/Courses</h1>;
+};
+
+const Videos = () => {
+  return <h1>Content/Videos</h1>;
+};
+
+const Design = () => {
+  return <h1>Design</h1>;
+};
 
 function App() {
+
+  const [inactive, setInactive ] = useState(false)
+
   return (
     <>
-      <Navbaar />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/edit/:id" element={<Edit />} />
-        <Route exact path="/view/:id" element={<Details />} />
-      </Routes>
+      <Navbaar onCollapse={(inactive) => {
+            console.log(inactive);
+            setInactive(inactive);
+          }} />
+
+      <div className={`container-routes ${inactive ? "inactive" : ""}`}>
+        <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/edit/:id" element={<Edit />} />
+            <Route exact path="/view/:id" element={<Details />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route exact path="/content" element={<Content />} />
+            <Route exact path="content/courses" element={<Courses />} />
+            <Route exact path="content/videos" element={<Videos />} />
+            <Route exact path="/design" element={<Design />} />
+        </Routes>
+      </div>
     </>
   );
 }

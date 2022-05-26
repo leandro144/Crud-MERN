@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../components/Navbaar.css"
 import { BiSearchAlt2, BiNews, BiPen } from "react-icons/bi";
@@ -9,18 +9,30 @@ import user from '../assets/user.jpg';
 import MenuItem from "./MenuItem";
 
 const menuItems = [
-    {name : "Dashboard", to: "/"},
+    {name : "Dashboard", to: "/", iconClassName:"bi bi-speedometer2"},
     {
         name: "Content",
         to: "/content",
+        iconClassName: "bi bi-speedometer2",
         subMenus: [{ name: "Courses"}, { name: "Videos"}],
     },
-    {name: "Design", to:"/design"},
+    {name: "Design", to:"/design", iconClassName:"bi bi-vector-pen"},
 ];
 
 const Navbaar = (props) => {
 
     const [inactive, setInactive] = useState(false);
+    
+    useEffect(() => {
+        if(inactive) {
+            document.querySelectorAll(".sub-menu").forEach((el) => {
+                el.classList.remove('active');
+            });
+        }
+
+        props.onCollapse(inactive);
+
+    }, [inactive]);
 
     return (
        <>
@@ -39,7 +51,7 @@ const Navbaar = (props) => {
 
                     <div className="search-controller">
                         <button className="search-btn">
-                            <i>< BiSearchAlt2 /></i>
+                            <i><BiSearchAlt2 /></i>
                         </button>
                         <input type="search" placeholder="Faça uma busca" />
                     </div>
@@ -55,12 +67,18 @@ const Navbaar = (props) => {
                             name={menuItem.name}
                             to={menuItem.to}
                             subMenus={menuItem.subMenus || []}
+                            iconClassName={menuItem.iconClassName}
+                            onClick={(e) => {
+                                if (inactive) {
+                                  setInactive(false);
+                                }
+                              }}
                             />
                         ))}
                         {/* <li>
                             <a className="menu-item">
                                 <div className="menu-icon">
-                                    <i><AiFillDashboard/></i>
+                                   <i class="bi bi-speedometer2"></i>
                                 </div>
                               <span>Dashboard</span>  
                             </a>
@@ -72,7 +90,7 @@ const Navbaar = (props) => {
                         <li>
                             <a className="menu-item">
                                 <div className="menu-icon">
-                                    <i><BiPen/></i>
+                                   <i class="bi bi-vector-pen"></i>
                                 </div>
                                <span>Design</span> 
                             </a>
