@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "../components/Navbaar.css"
-import { BiSearchAlt2, BiNews, BiPen } from "react-icons/bi";
-import { AiFillDashboard } from "react-icons/ai"
+import { BiSearchAlt2, BiHome } from "react-icons/bi";
 import { BsFillArrowLeftSquareFill, BsFillArrowRightSquareFill } from 'react-icons/bs'
 import logo from '../assets/logo.png';
 import user from '../assets/user.jpg';
 import MenuItem from "./MenuItem";
 
+
 const menuItems = [
-    {name : "Dashboard", to: "/", iconClassName:"bi bi-speedometer2"},
+    {name : "Home", exact: true, to: "/", iconName:"bi bi-house-fill"},
+    {name : "Nossa Equipe", exact: true, to: "/", iconName:"bi bi-people-fill"},
     {
-        name: "Content",
+        name: "Login",
+        exact: true,
         to: "/content",
-        iconClassName: "bi bi-speedometer2",
-        subMenus: [{ name: "Courses"}, { name: "Videos"}],
+        iconName: "bi bi-box-arrow-in-right",
+        subMenus: [
+            { name: "Courses", to: '/content/courses'},
+            { name: "Videos", to: '/content/videos'}],
     },
-    {name: "Design", to:"/design", iconClassName:"bi bi-vector-pen"},
+    {name: "Design", to:"/design", iconName:"bi bi-vector-pen"},
 ];
 
 const Navbaar = (props) => {
@@ -65,9 +68,10 @@ const Navbaar = (props) => {
                             <MenuItem 
                             key={index}
                             name={menuItem.name}
+                            exact={menuItem.exact}
                             to={menuItem.to}
                             subMenus={menuItem.subMenus || []}
-                            iconClassName={menuItem.iconClassName}
+                            iconName={menuItem.iconName}
                             onClick={(e) => {
                                 if (inactive) {
                                   setInactive(false);
@@ -75,26 +79,6 @@ const Navbaar = (props) => {
                               }}
                             />
                         ))}
-                        {/* <li>
-                            <a className="menu-item">
-                                <div className="menu-icon">
-                                   <i class="bi bi-speedometer2"></i>
-                                </div>
-                              <span>Dashboard</span>  
-                            </a>
-                        </li>
-                        <MenuItem 
-                            name={"Content"}
-                            subMenus={[{ name: "Courses"}, { name: "Videos"}]}
-                        />
-                        <li>
-                            <a className="menu-item">
-                                <div className="menu-icon">
-                                   <i class="bi bi-vector-pen"></i>
-                                </div>
-                               <span>Design</span> 
-                            </a>
-                        </li> */}
                     </ul>
                 </div>
 

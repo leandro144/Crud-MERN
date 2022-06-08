@@ -77,7 +77,7 @@ const Home = () => {
                         <th scope="col">ID</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Trabalho</th>
+                        <th scope="col">Função</th>
                         <th scope="col">Telefone</th>
                         <th scope="col"></th>
                     </tr>

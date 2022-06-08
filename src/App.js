@@ -1,5 +1,6 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
+import { Link } from "react-router-dom";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 import Navbaar from "./components/Navbaar";
 import Home from "./components/Home"
@@ -7,11 +8,13 @@ import Register from "./components/Register";
 import { Routes, Route } from 'react-router-dom';
 import Edit from "./components/Edit";
 import Details from "./components/Details";
-import { MenuItem } from "@mui/material";
+
 import { useState } from "react";
 
 const Dashboard = () => {
-  return <h1>Dashboard</h1>;
+  return (
+      <h1>Dashboard</h1>
+  );
 };
 
 const Content = () => {
@@ -19,7 +22,7 @@ const Content = () => {
 };
 
 const Courses = () => {
-  return <h1>Content/Courses</h1>;
+  return <h1>Content/Cursos</h1>
 };
 
 const Videos = () => {

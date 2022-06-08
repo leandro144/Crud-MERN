@@ -35,8 +35,8 @@ body {
 }
 
 .side-menu .top-section .logo {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     display: inline-block;
 }
@@ -72,7 +72,7 @@ body {
     background: transparent;
     border: 0;
     font-size: 20px;
-    color: #666;
+    color: #fff;
 }
 
 .side-menu .menu-item {
@@ -93,7 +93,7 @@ body {
 }
 
 .side-menu .main-menu .menu-item {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -101,8 +101,10 @@ body {
     cursor: pointer;
 }
 
+
 .side-menu .main-menu .sub-menu {
-    color: #333;
+    color: #fff;
+    
     margin-left: 1.25rem;
     border-left: 1px solid #666;
     padding-left: 1.875rem;
@@ -120,7 +122,8 @@ body {
     margin: 5px 0;
     font-size: 1rem;
     font-weight: 600;
-
+    text-decoration: none;
+    color: #fff;
 }
 
 .side-menu .main-menu .menu-item .menu-icon {
